@@ -29,8 +29,12 @@ pip install -r /home/browni/.julia/conda/3/envs/nemiel/requirements.txt
 To test it and run the localhost type:
 
 ```
-python3 create_fake_users.py 33
+python3 create_fake_stocks.py 33
 python3 basic_table.py
+(or)
+python3 editable_table.py
+(or)
+python3 ajax_table.py
 ```
 
 You can see http://localhost:5000 in your web browser to see the application or by clicking to the link while holding Ctrl.
