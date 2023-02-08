@@ -11,10 +11,31 @@ conda activate nemiel
 (or)
 conda activate /home/browni/.julia/conda/3/envs/nemiel
 
+```
+
+After activate the virtual environment you can download the source code here:
+
+```
+https://github.com/miguelgrinberg/flask-gridjs
+```
+
+then extract it at `/home/browni/.julia/conda/3/envs/nemiel` then back to terminal with nemiel environment activated and type:
+
+```
 pip install -r /home/browni/.julia/conda/3/envs/nemiel/requirements.txt
 
 ```
 
+To test it and run the localhost type:
+
+```
+python3 create_fake_users.py 33
+python3 basic_table.py
+```
+
+![Nemiel](https://github.com/glanzkaiser/Nemiel/blob/main/Nemiel1.png)
+![Nemiel](https://github.com/glanzkaiser/Nemiel/blob/main/Nemiel2.png)
+![Nemiel](https://github.com/glanzkaiser/Nemiel/blob/main/Nemiel3.png)
 
 # Source
 
