@@ -33,6 +33,8 @@ python3 create_fake_users.py 33
 python3 basic_table.py
 ```
 
+You can see http://localhost:5000 in your web browser to see the application or by clicking to the link while holding Ctrl.
+
 ![Nemiel](https://github.com/glanzkaiser/Nemiel/blob/main/Nemiel1.png)
 ![Nemiel](https://github.com/glanzkaiser/Nemiel/blob/main/Nemiel2.png)
 ![Nemiel](https://github.com/glanzkaiser/Nemiel/blob/main/Nemiel3.png)
