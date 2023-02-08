@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title>Server-Driven Table in Billion IDR</title>
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+    <style>
+      body {
+        font-family: Sans-Serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Server-Driven Table in Billion IDR</h1>
+      <hr>
+      <div id="table"></div>
+    </div>
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script>
+      const updateUrl = (prev, query) => {
+        return prev + (prev.indexOf('?') >= 0 ? '&' : '?') + new URLSearchParams(query).toString();
+      };
+
+      new gridjs.Grid({
+        columns: [
+          { id: 'name', name: 'Corporation' },
+          { id: 'founded', name: 'Founded' },
+          { id: 'business', name: 'Business' },
+          { id: 'revenue', name: 'Revenue' },
+          { id: 'netincome', name: 'Net Income' },
+          { id: 'equity', name: 'Equity' },
+          { id: 'debts', name: 'Debts' },
+          { id: 'bookvalue', name: 'Book Value' },
+        ],
+        server: {
+          url: '/api/data',
+          then: results => results.data,
+          total: results => results.total,
+        },
+        search: {
+          enabled: true,
+          server: {
+            url: (prev, search) => {
+              return updateUrl(prev, {search});
+            },
+          },
+        },
+        sort: {
+          enabled: true,
+          multiColumn: true,
+          server: {
+            url: (prev, columns) => {
+              const columnIds = ['name', 'founded', 'business', 'revenue', 'netincome', 'equity', 'debts', 'bookvalue'];
+              const sort = columns.map(col => (col.direction === 1 ? '+' : '-') + columnIds[col.index]);
+              return updateUrl(prev, {sort});
+            },
+          },
+        },
+        pagination: {
+          enabled: true,
+          server: {
+            url: (prev, page, limit) => {
+              return updateUrl(prev, {start: page * limit, length: limit});
+            },
+          },
+        },
+      }).render(document.getElementById('table'));
+    </script>
+  </body>
+</html>
